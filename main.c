@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 		{	
 			/*백돌 둘 수 있는 칸 있는지
 			없으면 패쓰(no space to put white othello, skip the turn)
-			printf("put a new white othello : ")
+			printf("\nput a new white othello : ")
 			scanf("%i %i", &row,&col)있으면 좌표 입력
 			좌표가 부적절한 경우
 			printf("invalid input! (already occupied)")1)이미 돌이 있는 곳

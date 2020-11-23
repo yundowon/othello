@@ -29,7 +29,7 @@ void print_status(void)
 		}
 	}
 	
-	printf("\n STATUS - WHITE : %i, BLACK : %i", white, black);
+	printf("\n STATUS - WHITE : %i, BLACK : %i\n", white, black);
 }
 
 //돌의 배치 출력
@@ -44,16 +44,25 @@ void print_othello(void)
 	 
 	for(row=0; row<N; row++)
 	{
-		printf(" -------------\n"); // 가로선 
-		printf("%i|", row);
+		for(i=0;i<=N;i++) // 가로선
+		{
+			printf("--");
+		}
+		printf("\n");
+		 
+		printf("%i|", row); // 좌표(행) 출력
+		
 		for(col=0; col<N; col++) // 세로선 
 		{
 			printf("%c|", gameboard[row][col]);
-			
 		}
 		printf("\n");
 	}
-	printf(" -------------\n"); // 가장 아래 가로선 
+	for(i=0;i<=N;i++) // 가장 아래 가로선
+		{
+			printf("--");
+		}
+		printf("\n"); 
 }
 	
 //게임 초기화 
