@@ -270,3 +270,27 @@ int downleft_black(int x, int y)
 	}
 }
 
+/* up(=u), down(=d), left(=l), right(=r),
+	upright(=ur), upleft(=ul), downright(=dr), downleft(=dl) 
+	돌을 놓을 수 있는지 방향 별로 체크 */
+int check_black(int a, int b)
+{
+	int u, d, l, r, ur, ul, dr, dl;
+	
+	u = up_black(a, b);
+	d = down_black(a, b);
+	l = left_black(a, b);
+	r = right_black(a, b);
+	ur = upright_black(a, b);
+	ul = upleft_black(a, b);
+	dr = downright_black(a, b);
+	dl = downleft_black(a, b);
+	
+	if(gameboard[a][b] != ' ') // 빈칸이 아니면 놓을 수 없음
+		return 1; 
+	if(u == 0||d == 0||l == 0||r == 0||ur == 0||ul == 0||dr == 0||dl == 0) 
+				//return이 0인 방향(돌을 놓을 수 있음)이 하나라도 있다면
+		return 0;
+	else
+		return 1;
+}
