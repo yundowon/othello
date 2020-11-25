@@ -59,3 +59,4 @@ int isGameEnd(void)
 	else
 		return 0;	
  } 
+

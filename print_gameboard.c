@@ -4,6 +4,7 @@
 
 int gameboard[N][N];
 int row, col;
+int i;
 
 //돌의 개수 출력 
 void print_status(void)
