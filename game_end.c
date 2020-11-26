@@ -87,7 +87,7 @@ void result(void)
 	
 	if(black > white)
 		printf("BLACK WIN!!");
-	if(black < white)
+	else if(black < white)
 		printf("WHITE WIN!!");
 	else
 		printf("BLACK AND WHITE TIED");
