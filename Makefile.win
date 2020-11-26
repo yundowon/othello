@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o print_gameboard.o game_end.o check_black.o check_white.o
-LINKOBJ  = main.o print_gameboard.o game_end.o check_black.o check_white.o
+OBJ      = main.o print_gameboard.o game_end.o check_black.o check_white.o result.o
+LINKOBJ  = main.o print_gameboard.o game_end.o check_black.o check_white.o result.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -38,3 +38,6 @@ check_black.o: check_black.c
 
 check_white.o: check_white.c
 	$(CC) -c check_white.c -o check_white.o $(CFLAGS)
+
+result.o: result.c
+	$(CC) -c result.c -o result.o $(CFLAGS)

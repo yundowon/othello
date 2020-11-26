@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define N 6
-/* up, down, left, right, upright, upleft, downright, downleft
-	방향을 따라 돌을 둘 수 없는 곳의 경우 1을 리턴하고
-	돌을 둘 수 있는 곳에 0을 리턴*/
+/* up, down, left, right, upright, upleft, downright, downleft 
+	방향에 따라 각각 돌을 둘 수 있는지 확인 */
 int gameboard[N][N];
 
 int up_white(int x, int y)
@@ -11,13 +10,13 @@ int up_white(int x, int y)
 	int i;
 		
 	if(x-1 < 0)  //한칸 위가 모서리인지 확인 
-		return 1;
+		return 1; //돌을 둘 수 없음 
 	else
 	{
 		if(gameboard[x-1][y] == 'O') //이웃한 칸이 같은 백돌
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else if(gameboard[x-1][y] == ' ') //이웃한 칸이 빈칸 
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else
 		{
 			if(gameboard[x-1][y] == 'X') //이웃한 칸이 흑돌이라면
@@ -31,9 +30,9 @@ int up_white(int x, int y)
  					if(gameboard[x-2-i][y] == 'X') //위로 이웃한 칸이 흑돌이라면 
 						continue; //다음 반복으로 
  					if(gameboard[x-2-i][y] == 'O') //위로 이웃한 칸이 백돌이라면 
-						return 0;
+						return 0; //돌을 둘 수 있음 
 				}
-				return 1;
+				return 1; //돌을 둘 수 없음 
 			}	
 		}
 	}
@@ -44,13 +43,13 @@ int down_white(int x, int y)
 	int i;
 	
 	if(x+1 >= N)  //한칸 아래가 모서리인지 확인
-		return 1;
+		return 1; //돌을 둘 수 없음 
 	else
 	{
 		if(gameboard[x+1][y] == 'O') //이웃한 칸이 같은 백돌
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else if(gameboard[x+1][y] == ' ') //이웃한 칸이 빈칸 
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else
 		{
 			if(gameboard[x+1][y] == 'X') //이웃한 칸이 흑돌이라면
@@ -64,9 +63,9 @@ int down_white(int x, int y)
  					if(gameboard[x+2+i][y] == 'X') //아래로 이웃한 칸이 흑돌이라면
 						continue; //다음 반복으로
  					if(gameboard[x+2+i][y] == 'O') //아래로 이웃한 칸이 백돌이라면
-						return 0;
+						return 0; //돌을 둘 수 있음 
 				}
-				return 1;
+				return 1; //돌을 둘 수 없음 
 			}	
 		}
 	}
@@ -77,13 +76,13 @@ int left_white(int x, int y)
 	int i;
 	
 	if(y-1<0)  //한칸 왼쪽이 모서리인지 확인
-		return 1;
+		return 1; //돌을 둘 수 없음 
 	else
 	{
 		if(gameboard[x][y-1] == 'O') //이웃한 칸이 같은 백돌
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else if(gameboard[x][y-1] == ' ') //이웃한 칸이 빈칸 
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else
 		{
 			if(gameboard[x][y-1] == 'X') //이웃한 칸이 흑돌이라면
@@ -97,9 +96,9 @@ int left_white(int x, int y)
  					if(gameboard[x][y-2-i] == 'X') //왼쪽으로 이웃한 칸이 흑돌이라면
 						continue; //다음 반복으로
  					if(gameboard[x][y-2-i] == 'O') //왼쪽로 이웃한 칸이 백돌이라면
-						return 0;
+						return 0; //돌을 둘 수 있음 
 				}
-				return 1;
+				return 1; //돌을 둘 수 없음 
 			}	
 		}
 	}
@@ -110,13 +109,13 @@ int right_white(int x, int y)
 	int i;
 	
 	if(y+1 >= N)  //한칸 오른쪽이 모서리인지 확인
-		return 1;
+		return 1; //돌을 둘 수 없음 
 	else
 	{
 		if(gameboard[x][y+1] == 'O') //이웃한 칸이 같은 백돌
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else if(gameboard[x][y+1] == ' ') //이웃한 칸이 빈칸 
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else
 		{
 			if(gameboard[x][y+1] == 'X') //이웃한 칸이 흑돌이라면
@@ -130,9 +129,9 @@ int right_white(int x, int y)
  					if(gameboard[x][y+2+i] == 'X') //오른쪽으로 이웃한 칸이 훅돌이라면
 						continue; //다음 반복으로
  					if(gameboard[x][y+2+i] == 'O') //오른쪽으로 이웃한 칸이 백돌이라면
-						return 0;
+						return 0; //돌을 둘 수 있음 
 				}
-				return 1;
+				return 1; //돌을 둘 수 없음 
 			}	
 		}
 	}
@@ -143,13 +142,13 @@ int upright_white(int x, int y)
 	int i;
 	
 	if((x-1 < 0)||(y+1 >= N))  //한칸 위, 한칸 오른쪽이 모서리인지 확인
-		return 1;
+		return 1; //돌을 둘 수 없음 
 	else
 	{
 		if(gameboard[x-1][y+1] == 'O') //이웃한 칸이 같은 백돌
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else if(gameboard[x-1][y+1] == ' ') //이웃한 칸이 빈칸 
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else
 		{
 			if(gameboard[x-1][y+1] == 'X') //이웃한 칸이 흑돌이라면
@@ -163,9 +162,9 @@ int upright_white(int x, int y)
  					if(gameboard[x-2-i][y+2+i] == 'X') //오른쪽 위로 이웃한 칸이 흑돌이라면
 						continue; //다음 반복으로
  					if(gameboard[x-2-i][y+2+i] == 'O') //오른쪽 위로 이웃한 칸이 백돌이라면
-						return 0;
+						return 0; //돌을 둘 수 있음 
 				}
-				return 1;
+				return 1; //돌을 둘 수 없음 
 			}	
 		}
 	}
@@ -176,13 +175,13 @@ int upleft_white(int x, int y)
 	int i;
 	
 	if((x-1 < 0)||(y-1 < 0))  //한칸 위, 한칸 왼쪽이 모서리인지 확인
-		return 1;
+		return 1; //돌을 둘 수 없음 
 	else
 	{
 		if(gameboard[x-1][y-1] == 'O') //이웃한 칸이 같은 백돌
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else if(gameboard[x-1][y-1] == ' ') //이웃한 칸이 빈칸 
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else
 		{
 			if(gameboard[x-1][y-1] == 'X') //이웃한 칸이 흑돌이라면
@@ -196,9 +195,9 @@ int upleft_white(int x, int y)
  					if(gameboard[x-2-i][y-2-i] == 'X') //왼쪽 위로 이웃한 칸이 흑돌이라면
 						continue; //다음 반복으로
  					if(gameboard[x-2-i][y-2-i] == 'O') //왼쪽 위로 이웃한 칸이 백돌이라면
-						return 0;
+						return 0; //돌을 둘 수 있음 
 				}
-				return 1;
+				return 1; //돌을 둘 수 없음 
 			}	
 		}
 	}
@@ -209,13 +208,13 @@ int downright_white(int x, int y)
 	int i;
 	
 	if((x+1 >= N)||(y+1 >= N))  //한칸 아래, 한칸 오른쪽이 모서리인지 확인
-		return 1;
+		return 1; //돌을 둘 수 없음 
 	else
 	{
 		if(gameboard[x+1][y+1] == 'O') //이웃한 칸이 같은 백돌
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else if(gameboard[x+1][y+1] == ' ') //이웃한 칸이 빈칸 
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else
 		{
 			if(gameboard[x+1][y+1] == 'X') //이웃한 칸이 흑돌이라면
@@ -229,9 +228,9 @@ int downright_white(int x, int y)
  					if(gameboard[x+2+i][y+2+i] == 'X') //오른쪽 아래로 이웃한 칸이 흑돌이라면
 						continue; //다음 반복으로
  					if(gameboard[x+2+i][y+2+i] == 'O') //오른쪽 아래로 이웃한 칸이 백돌이라면
-						return 0;
+						return 0; //돌을 둘 수 있음 
 				}
-				return 1;
+				return 1; //돌을 둘 수 없음 
 			}	
 		}
 	}
@@ -242,13 +241,13 @@ int downleft_white(int x, int y)
 	int i;
 	
 	if((x+1 >= N)||(y-1 < 0))  //한칸 아래, 한칸 왼쪽이 모서리인지 확인
-		return 1;
+		return 1; //돌을 둘 수 없음 
 	else
 	{
 		if(gameboard[x+1][y-1] == 'O') //이웃한 칸이 같은 백돌
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else if(gameboard[x+1][y-1] == ' ') //이웃한 칸이 빈칸 
-			return 1;
+			return 1; //돌을 둘 수 없음 
 		else
 		{
 			if(gameboard[x+1][y-1] == 'X') //이웃한 칸이 흑돌이라면
@@ -262,9 +261,9 @@ int downleft_white(int x, int y)
  					if(gameboard[x+2+i][y-1-i] == 'X') //왼쪽 아래로 이웃한 칸이 흑돌이라면
 						continue; //다음 반복으로
  					if(gameboard[x+2+i][y-1-i] == 'O') //왼쪽 아래로 이웃한 칸이 백돌이라면
-						return 0;
+						return 0; //돌을 둘 수 있음 
 				}
-				return 1;
+				return 1; //돌을 둘 수 없음 
 			}	
 		}
 	}
@@ -286,11 +285,14 @@ int check_white(int a, int b)
 	dr = downright_white(a, b);
 	dl = downleft_white(a, b);
 	
-	if(gameboard[a][b] != ' ') // 빈칸이 아니면 놓을 수 없음
-		return 1; 
-	if(u == 0||d == 0||l == 0||r == 0||ur == 0||ul == 0||dr == 0||dl == 0) 
-				//return이 0인 방향(돌을 놓을 수 있음)이 하나라도 있다면
-		return 0;
+	if(gameboard[a][b] != ' ') // 빈칸이 아니면
+		return 1; //돌을 둘 수 없음 
 	else
-		return 1;
+	{
+		if(u == 0||d == 0||l == 0||r == 0||ur == 0||ul == 0||dr == 0||dl == 0) 
+				//return이 0인 방향(돌을 놓을 수 있음)이 하나라도 있다면
+			return 0; //진행 
+		else
+			return 1; //패스 
+	}
 }

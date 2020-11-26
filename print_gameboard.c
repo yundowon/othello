@@ -6,7 +6,7 @@ int gameboard[N][N];
 int row, col;
 int i;
 
-//돌의 개수 출력 
+/* 돌의 개수 출력 */
 void print_status(void)
 {
 	int white = 0;
@@ -33,7 +33,7 @@ void print_status(void)
 	printf("\n STATUS - WHITE : %i, BLACK : %i\n", white, black);
 }
 
-//돌의 배치 출력
+/* 보드 틀 출력 */ 
 void print_othello(void)
 {
 	printf(" "); // 좌표(열)앞의 빈칸 출력
@@ -66,7 +66,7 @@ void print_othello(void)
 		printf("\n"); 
 }
 	
-//게임 초기화 
+/* 게임 초기화 */
 void init_othello(void)
 {
 	for(row=0; row<N; row++) //보드의 빈칸 

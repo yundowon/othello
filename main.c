@@ -9,6 +9,7 @@ extern void init_othello();
 extern int check_white();
 extern int check_black();
 extern int isGameEnd();
+extern void result();
 
 int gameboard[N][N];
 
@@ -21,8 +22,8 @@ int main(int argc, char *argv[]) {
 	
 	while(isGameEnd() == 0) //게임종료조건이 만족하여 0이 되기 전까지 반복 
 	{
-		print_othello(); // 배치 상태 출력
-		print_status();
+		print_othello(); //보드 틀 출력
+		print_status(); //돌의 개수 출력
 		if(isGameEnd() == 1)
 			continue;
 					
@@ -37,29 +38,32 @@ int main(int argc, char *argv[]) {
 			while(1) //좌표를 제대로 입력할 때까지 반복 
 			{
 				printf("\nput a new white othello : "); //좌표 입력 
-				
-				if(scanf_s("%i %i", &row,&col) == 0) //숫자 외에 다른 것 입력
+				scanf("%i %i", &row, &col); 
+								
+				if((row >= 0 && row < N)||(col >= 0 && col < N)) //숫자 외에 다른 것 입력
 				{
-					printf("invalid input format!!\n");
-					rewind(stdin);
+						break; //반복문 빠져나옴
 				}
 				else if(gameboard[row][col] == 'O'||gameboard[row][col] == 'X') //이미 돌이 있는 곳
 				{
 					printf("invalid input! (already occupied)\n");
-					continue;
+					continue; //다시 반복
 				}
 				else if(check_white(row, col) == 1) //둘 수 없는 곳
 				{
 					printf("invalid input! (no flip happens)\n");
-					continue;
+					continue; //다시 반복
 				}
 				else if((row >= N && row < 0)||(col >= N && col < 0)) //입력값이 범위를 벗어남 
 				{
 					printf("invalid input! (should be less than %i)\n", N);
-					continue;
+					continue; //다시 반복
 				}
-				else
-					break;
+				else //숫자 외에 다른 것 입력
+				{
+					printf("invalid input format!!\n");
+					continue; //다시 반복
+				}
 		 	}
 		
 			//좌표가 적절한 경우
@@ -77,30 +81,33 @@ int main(int argc, char *argv[]) {
 			}
 			while(1) //좌표를 제대로 입력할 때까지 반복 
 			{
-				printf("\nput a new black othello : "); //좌표 입력 
+				printf("\nput a new black othello : "); //좌표 입력
+				scanf("%i %i", &row, &col); 
 				
-				if(scanf_s("%i %i", &row,&col) == 0) //숫자 외에 다른 것 입력
+				if((row >= 0 && row < N)||(col >= 0 && col < N)) //숫자 외에 다른 것 입력
 				{
-					printf("invalid input format!!\n");
-					rewind(stdin);
+					break; //반복문 빠져나옴
 				}
 				else if(gameboard[row][col] == 'O'||gameboard[row][col] == 'X') //이미 돌이 있는 곳
 				{
 					printf("invalid input! (already occupied)\n");
-					continue;
+					continue; //다시 반복
 				}
 				else if(check_white(row, col) == 1) //둘 수 없는 곳
 				{
 					printf("invalid input! (no flip happens)\n");
-					continue;
+					continue; //다시 반복
 				}
 				else if((row >= N && row < 0)||(col >= N && col < 0)) //입력값이 범위를 벗어남 
 				{
 					printf("invalid input! (should be less than %i)\n", N);
-					continue;
+					continue; //다시 반복
 				}
-				else
-					break;
+				else //숫자 외에 다른 것 입력
+				{
+					printf("invalid input format!!\n");
+					continue; //다시 반복
+				}
 		 	}
 		
 			//좌표가 적절한 경우
@@ -111,4 +118,5 @@ int main(int argc, char *argv[]) {
 	
 		return 0;
 	}
+	result();
 }
